@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Services", "1 - Services", "{9BAB06FC-6560-4C32-BF0C-8FF38A88A6FE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Application", "2 - Application", "{64D58334-1BBD-4FB2-B4FB-ACF1FE821FD0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Domain", "3 - Domain", "{AF3800F5-5C89-4ECC-8CD7-686757D7F248}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infra", "4 - Infra", "{447800B3-9834-42A8-9397-FF5F16D2FABC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1 - Data", "4.1 - Data", "{89D23226-FB00-4DE9-96FC-E21FBEEA2034}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2 - CrossCutting", "4.2 - CrossCutting", "{709965AE-A6D7-4B99-9ABB-CB28439F9CCA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MC.ApiCadastroClientes.Domain", "src\MC.ApiCadastroClientes.Domain\MC.ApiCadastroClientes.Domain.csproj", "{5CD1AFED-83E2-43CE-83EA-10EE0CD43798}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5CD1AFED-83E2-43CE-83EA-10EE0CD43798}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CD1AFED-83E2-43CE-83EA-10EE0CD43798}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CD1AFED-83E2-43CE-83EA-10EE0CD43798}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CD1AFED-83E2-43CE-83EA-10EE0CD43798}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{89D23226-FB00-4DE9-96FC-E21FBEEA2034} = {447800B3-9834-42A8-9397-FF5F16D2FABC}
+		{709965AE-A6D7-4B99-9ABB-CB28439F9CCA} = {447800B3-9834-42A8-9397-FF5F16D2FABC}
+		{5CD1AFED-83E2-43CE-83EA-10EE0CD43798} = {AF3800F5-5C89-4ECC-8CD7-686757D7F248}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AE537887-38AA-45FE-A85C-F99B3CB2CB9F}
+	EndGlobalSection
+EndGlobal
