@@ -1,6 +1,7 @@
 ﻿using MC.ApiCadastroClientes.Domain.Interfaces;
 using MC.ApiCadastroClientes.Domain.Models;
 using MC.ApiCadastroClientes.Infra.Data.Context;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -28,6 +29,14 @@ namespace MC.ApiCadastroClientes.Infra.Data.Repository
         public Cliente ObterPorEmail(string email)
         {
             return Buscar(c => c.Email == email).FirstOrDefault();
+        }
+
+        public override void Remover(Guid id)
+        {
+            var cliente = ObterPorId(id);
+            cliente.Excluir();
+
+            Atualizar(cliente);
         }
     }
 }

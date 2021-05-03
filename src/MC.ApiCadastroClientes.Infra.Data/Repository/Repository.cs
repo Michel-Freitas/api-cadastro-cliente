@@ -20,14 +20,14 @@ namespace MC.ApiCadastroClientes.Infra.Data.Repository
             DbSet = Db.Set<TEntity>();
         }
 
-        public TEntity Adicioner(TEntity obj)
+        public virtual TEntity Adicioner(TEntity obj)
         {
             var resultEntity = DbSet.Add(obj);
             SaveChanges();
             return resultEntity.Entity;
         }
 
-        public TEntity Atualizar(TEntity obj)
+        public virtual TEntity Atualizar(TEntity obj)
         {
             var entry = Db.Entry(obj);
             DbSet.Attach(obj);
@@ -36,32 +36,32 @@ namespace MC.ApiCadastroClientes.Infra.Data.Repository
             return obj;
         }
 
-        public IEnumerable<TEntity> Buscar(Expression<Func<TEntity, bool>> predicate)
+        public virtual IEnumerable<TEntity> Buscar(Expression<Func<TEntity, bool>> predicate)
         {
             return DbSet.Where(predicate);
         }
 
-        public void Dispose()
+        public virtual void Dispose()
         {
             Db.Dispose();
         }
 
-        public TEntity ObterPorId(Guid id)
+        public virtual TEntity ObterPorId(Guid id)
         {
             return DbSet.Find(id);
         }
 
-        public IEnumerable<TEntity> ObterTodos()
+        public virtual IEnumerable<TEntity> ObterTodos()
         {
             return DbSet.ToList();
         }
 
-        public IEnumerable<TEntity> ObterTodosPaginados(int s, int t)
+        public virtual IEnumerable<TEntity> ObterTodosPaginados(int s, int t)
         {
             return DbSet.Skip(s).Take(t).ToList();
         }
 
-        public void Remover(Guid id)
+        public virtual void Remover(Guid id)
         {
             var obj = new TEntity() { Id = id };
             DbSet.Remove(obj);

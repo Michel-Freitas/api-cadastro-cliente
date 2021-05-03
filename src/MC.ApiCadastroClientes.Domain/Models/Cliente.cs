@@ -17,5 +17,11 @@ namespace MC.ApiCadastroClientes.Domain.Models
         public bool Ativo { get; set; }
         public bool Excluido { get; set; }
         public virtual ICollection<Endereco> Enderecos { get; set; }
+
+        public void Excluir()
+        {
+            Ativo = false;
+            Excluido = true;
+        }
     }
 }
