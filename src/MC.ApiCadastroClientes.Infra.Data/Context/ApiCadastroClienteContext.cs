@@ -6,6 +6,10 @@ namespace MC.ApiCadastroClientes.Infra.Data.Context
 {
     public class ApiCadastroClienteContext : DbContext
     {
+        public ApiCadastroClienteContext()
+        {
+
+        }
         public ApiCadastroClienteContext(DbContextOptions<ApiCadastroClienteContext> options) : base(options)
         {
 
