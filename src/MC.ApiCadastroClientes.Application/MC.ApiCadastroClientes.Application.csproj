@@ -4,4 +4,9 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MC.ApiCadastroClientes.Domain\MC.ApiCadastroClientes.Domain.csproj" />
+    <ProjectReference Include="..\MC.ApiCadastroClientes.Infra.Data\MC.ApiCadastroClientes.Infra.Data.csproj" />
+  </ItemGroup>
+
 </Project>
