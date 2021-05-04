@@ -1,4 +1,5 @@
 using Autofac;
+using MC.ApiCadastroClientes.Application.AutoMapper;
 using MC.ApiCadastroClientes.Infra.CrossCutting.AutoFacConfig;
 using MC.ApiCadastroClientes.Infra.Data.Context;
 using Microsoft.AspNetCore.Builder;
@@ -23,10 +24,12 @@ namespace MC.ApiCadastroClientes.Services.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Configuração do Contexto
             services.AddDbContext<ApiCadastroClienteContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

@@ -33,8 +33,6 @@ namespace MC.ApiCadastroClientes.Application.ViewModel
         public DateTime DataNascimento { get; set; }
 
         public DateTime DataCadastro { get; set; }
-        public bool Ativo { get; set; }
-        public bool Excluido { get; set; }
         public virtual ICollection<EnderecoViewModel> Enderecos { get; set; }
     }
 }

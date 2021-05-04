@@ -1,4 +1,6 @@
 ﻿using Autofac;
+using AutoMapper;
+using MC.ApiCadastroClientes.Application.AutoMapper;
 using MC.ApiCadastroClientes.Application.Interfaces;
 using MC.ApiCadastroClientes.Application.Services;
 using MC.ApiCadastroClientes.Domain.Interfaces;
@@ -14,6 +16,12 @@ namespace MC.ApiCadastroClientes.Infra.CrossCutting.AutoFacConfig
 
             builder.RegisterType<ClienteAppService>().As<IClienteAppService>();
             builder.RegisterType<ClienteRepository>().As<IClienteRepository>();
+            builder.Register(ctx => new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile(new AutoMapperConfig());
+            }));
+
+            builder.Register(ctx => ctx.Resolve<MapperConfiguration>().CreateMapper()).As<IMapper>().InstancePerLifetimeScope();
 
             #endregion
         }

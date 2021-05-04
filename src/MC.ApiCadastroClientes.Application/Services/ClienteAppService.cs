@@ -1,13 +1,10 @@
-﻿using MC.ApiCadastroClientes.Application.Interfaces;
+﻿using AutoMapper;
+using MC.ApiCadastroClientes.Application.Interfaces;
 using MC.ApiCadastroClientes.Application.ViewModel;
 using MC.ApiCadastroClientes.Domain.Interfaces;
 using MC.ApiCadastroClientes.Domain.Models;
-using MC.ApiCadastroClientes.Infra.Data.Repository;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MC.ApiCadastroClientes.Application.Services
 {
@@ -15,15 +12,19 @@ namespace MC.ApiCadastroClientes.Application.Services
     {
 
         private readonly IClienteRepository _clienteRepository;
+        private static IMapper _mapper;
 
-        public ClienteAppService(IClienteRepository clienteRepository)
+        public ClienteAppService(IClienteRepository clienteRepository, IMapper mapper)
         {
             _clienteRepository = clienteRepository;
+            _mapper = mapper;
         }
 
         public ClienteEnderecoViewModel Adicionar(ClienteEnderecoViewModel clienteEnderecoViewModel)
         {
-            var cliente = new Cliente();
+            var cliente = _mapper.Map<Cliente>(clienteEnderecoViewModel.Cliente);
+            cliente.Ativo = true;
+
             _clienteRepository.Adicioner(cliente);
             return clienteEnderecoViewModel;
         }
@@ -35,7 +36,7 @@ namespace MC.ApiCadastroClientes.Application.Services
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            _clienteRepository.Dispose();
         }
 
         public IEnumerable<ClienteViewModel> ObterAtivos()
