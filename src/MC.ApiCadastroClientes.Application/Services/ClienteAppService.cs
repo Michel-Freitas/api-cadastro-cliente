@@ -34,7 +34,9 @@ namespace MC.ApiCadastroClientes.Application.Services
 
         public ClienteViewModel Atualizar(ClienteViewModel clienteViewModel)
         {
-            throw new NotImplementedException();
+            var cliente = _mapper.Map<Cliente>(clienteViewModel);
+            _clienteRepository.Atualizar(cliente);
+            return clienteViewModel;
         }
 
         public void Dispose()

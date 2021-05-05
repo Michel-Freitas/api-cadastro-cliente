@@ -26,6 +26,12 @@ namespace MC.ApiCadastroClientes.Services.WebApi.Controllers
             return clienteEndereco;
         }
 
+        [HttpPut("{id}")]
+        public ActionResult<ClienteViewModel> atualizar(Guid id, [FromBody] ClienteViewModel cliente)
+        {
+            return _clienteAppService.Atualizar(cliente);
+        }
+
         [HttpGet]
         public ActionResult<IEnumerable<ClienteViewModel>> obterAtivos()
         {
