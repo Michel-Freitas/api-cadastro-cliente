@@ -25,5 +25,17 @@ namespace MC.ApiCadastroClientes.Services.WebApi.Controllers
             _clienteAppService.Adicionar(clienteEndereco);
             return clienteEndereco;
         }
+
+        [HttpGet]
+        public ActionResult<IEnumerable<ClienteViewModel>> obterAtivos()
+        {
+            return _clienteAppService.ObterAtivos().ToList();
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult<ClienteViewModel> obterPorId(Guid id)
+        {
+            return _clienteAppService.ObterPorId(id);
+        }
     }
 }

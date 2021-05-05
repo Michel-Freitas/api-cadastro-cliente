@@ -38,6 +38,7 @@ namespace MC.ApiCadastroClientes.Infra.Data.Repository
 
         public virtual IEnumerable<TEntity> Buscar(Expression<Func<TEntity, bool>> predicate)
         {
+            
             return DbSet.Where(predicate);
         }
 
