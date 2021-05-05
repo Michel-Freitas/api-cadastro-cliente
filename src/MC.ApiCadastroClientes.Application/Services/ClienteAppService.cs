@@ -35,6 +35,7 @@ namespace MC.ApiCadastroClientes.Application.Services
         public ClienteViewModel Atualizar(ClienteViewModel clienteViewModel)
         {
             var cliente = _mapper.Map<Cliente>(clienteViewModel);
+            cliente.Ativo = true;
             _clienteRepository.Atualizar(cliente);
             return clienteViewModel;
         }
@@ -71,7 +72,7 @@ namespace MC.ApiCadastroClientes.Application.Services
 
         public void Remover(Guid id)
         {
-            throw new NotImplementedException();
+            _clienteRepository.Remover(id);
         }
     }
 }

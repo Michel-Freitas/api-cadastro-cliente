@@ -43,5 +43,11 @@ namespace MC.ApiCadastroClientes.Services.WebApi.Controllers
         {
             return _clienteAppService.ObterPorId(id);
         }
+
+        [HttpDelete("{id}")]
+        public void remover(Guid id)
+        {
+            _clienteAppService.Remover(id);
+        }
     }
 }
