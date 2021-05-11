@@ -24,6 +24,17 @@ namespace MC.ApiCadastroClientes.Services.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Configurando o Cors
+            services.AddCors(options => {
+                options.AddPolicy("MyPolicy",
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:3000")
+                            .WithMethods("*")
+                            .WithHeaders("*");
+                    });
+            });
+
             // Configuração do Contexto
             services.AddDbContext<ApiCadastroClienteContext>(options =>
             {
@@ -56,12 +67,14 @@ namespace MC.ApiCadastroClientes.Services.WebApi
 
             app.UseRouting();
 
+            app.UseCors();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-            });
+            });            
         }
     }
 }

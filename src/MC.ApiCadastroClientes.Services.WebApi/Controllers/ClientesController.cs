@@ -1,5 +1,6 @@
 ﻿using MC.ApiCadastroClientes.Application.Interfaces;
 using MC.ApiCadastroClientes.Application.ViewModel;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -32,6 +33,7 @@ namespace MC.ApiCadastroClientes.Services.WebApi.Controllers
             return _clienteAppService.Atualizar(cliente);
         }
 
+        [EnableCors("MyPolicy")]
         [HttpGet]
         public ActionResult<IEnumerable<ClienteViewModel>> obterAtivos()
         {
