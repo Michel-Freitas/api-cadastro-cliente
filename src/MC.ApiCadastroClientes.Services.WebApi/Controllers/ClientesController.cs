@@ -21,10 +21,10 @@ namespace MC.ApiCadastroClientes.Services.WebApi.Controllers
         }
 
         [HttpPost]
-        public ActionResult<ClienteEnderecoViewModel> adicionarCliente([FromBody] ClienteEnderecoViewModel clienteEndereco)
+        public ActionResult<NewClienteViewModel> adicionarCliente([FromBody] NewClienteViewModel cliente)
         {
-            _clienteAppService.Adicionar(clienteEndereco);
-            return clienteEndereco;
+            _clienteAppService.Adicionar(cliente);
+            return cliente;
         }
 
         [HttpPut("{id}")]
@@ -35,7 +35,7 @@ namespace MC.ApiCadastroClientes.Services.WebApi.Controllers
 
         [EnableCors("MyPolicy")]
         [HttpGet]
-        public ActionResult<IEnumerable<ClienteViewModel>> obterAtivos()
+        public ActionResult<IEnumerable<ViewClienteViewModel>> obterAtivos()
         {
             return _clienteAppService.ObterAtivos().ToList();
         }

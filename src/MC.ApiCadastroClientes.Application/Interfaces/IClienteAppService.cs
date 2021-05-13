@@ -6,13 +6,13 @@ namespace MC.ApiCadastroClientes.Application.Interfaces
 {
     public interface IClienteAppService : IDisposable
     {
-        ClienteEnderecoViewModel Adicionar(ClienteEnderecoViewModel clienteEnderecoViewModel);
+        NewClienteViewModel Adicionar(NewClienteViewModel cliente);
 
         ClienteViewModel ObterPorId(Guid id);
 
         IEnumerable<ClienteViewModel> ObterTodos();
 
-        IEnumerable<ClienteViewModel> ObterAtivos();
+        IEnumerable<ViewClienteViewModel> ObterAtivos();
 
         ClienteViewModel ObterPorCpf(string cpf);
 

@@ -20,16 +20,16 @@ namespace MC.ApiCadastroClientes.Application.Services
             _mapper = mapper;
         }
 
-        public ClienteEnderecoViewModel Adicionar(ClienteEnderecoViewModel clienteEnderecoViewModel)
+        public NewClienteViewModel Adicionar(NewClienteViewModel clienteModel)
         {
-            var cliente = _mapper.Map<Cliente>(clienteEnderecoViewModel.Cliente);
-            var endereco = _mapper.Map<Endereco>(clienteEnderecoViewModel.Endereco);
+            var cliente = _mapper.Map<Cliente>(clienteModel);
+            //var endereco = _mapper.Map<Endereco>(clienteEnderecoViewModel.Endereco);
 
-            cliente.Enderecos.Add(endereco);
+            //cliente.Enderecos.Add(endereco);
             cliente.Ativo = true;
 
             _clienteRepository.Adicioner(cliente);
-            return clienteEnderecoViewModel;
+            return clienteModel;
         }
 
         public ClienteViewModel Atualizar(ClienteViewModel clienteViewModel)
@@ -45,9 +45,9 @@ namespace MC.ApiCadastroClientes.Application.Services
             _clienteRepository.Dispose();
         }
 
-        public IEnumerable<ClienteViewModel> ObterAtivos()
+        public IEnumerable<ViewClienteViewModel> ObterAtivos()
         {
-            return _mapper.Map<IEnumerable<ClienteViewModel>>(_clienteRepository.ObterAtivos());
+            return _mapper.Map<IEnumerable<ViewClienteViewModel>>(_clienteRepository.ObterAtivos());
         }
 
         public ClienteViewModel ObterPorCpf(string cpf)
