@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace MC.ApiCadastroClientes.Services.WebApi.Controllers
 {
@@ -28,28 +27,30 @@ namespace MC.ApiCadastroClientes.Services.WebApi.Controllers
         }
 
         [HttpPut("{id}")]
-        public ActionResult<ClienteViewModel> atualizar(Guid id, [FromBody] ClienteViewModel cliente)
+        public ActionResult<ViewUpdateClienteViewModel> atualizar(Guid id, [FromBody] ViewUpdateClienteViewModel cliente)
         {
             return _clienteAppService.Atualizar(cliente);
         }
 
         [EnableCors("MyPolicy")]
         [HttpGet]
-        public ActionResult<IEnumerable<ViewClienteViewModel>> obterAtivos()
+        public ActionResult<IEnumerable<ViewUpdateClienteViewModel>> obterAtivos()
         {
             return _clienteAppService.ObterAtivos().ToList();
         }
 
         [HttpGet("{id}")]
-        public ActionResult<ClienteViewModel> obterPorId(Guid id)
+        public ActionResult<ViewUpdateClienteViewModel> obterPorId(string id)
         {
-            return _clienteAppService.ObterPorId(id);
+            Guid.TryParse(id, out Guid idGuid);
+            return _clienteAppService.ObterPorId(idGuid);
         }
 
         [HttpDelete("{id}")]
-        public void remover(Guid id)
+        public void remover(string id)
         {
-            _clienteAppService.Remover(id);
+            Guid.TryParse(id, out Guid idGuid);
+            _clienteAppService.Remover(idGuid);
         }
     }
 }

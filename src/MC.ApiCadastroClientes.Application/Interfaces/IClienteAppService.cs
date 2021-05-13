@@ -8,17 +8,17 @@ namespace MC.ApiCadastroClientes.Application.Interfaces
     {
         NewClienteViewModel Adicionar(NewClienteViewModel cliente);
 
-        ClienteViewModel ObterPorId(Guid id);
+        ViewUpdateClienteViewModel ObterPorId(Guid id);
 
-        IEnumerable<ClienteViewModel> ObterTodos();
+        IEnumerable<ViewUpdateClienteViewModel> ObterTodos();
 
-        IEnumerable<ViewClienteViewModel> ObterAtivos();
+        IEnumerable<ViewUpdateClienteViewModel> ObterAtivos();
 
-        ClienteViewModel ObterPorCpf(string cpf);
+        ViewUpdateClienteViewModel ObterPorCpf(string cpf);
 
-        ClienteViewModel ObterPorEmail(string email);
+        ViewUpdateClienteViewModel ObterPorEmail(string email);
 
-        ClienteViewModel Atualizar(ClienteViewModel clienteViewModel);
+        ViewUpdateClienteViewModel Atualizar(ViewUpdateClienteViewModel clienteViewModel);
 
         void Remover(Guid id);
     }

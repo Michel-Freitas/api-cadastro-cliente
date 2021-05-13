@@ -17,7 +17,7 @@ namespace MC.ApiCadastroClientes.Infra.Data.Repository
         {
             apiContext = apicontext;
         }
-
+        
         public override Cliente ObterPorId(Guid id)
         {
             var sql = @"SELECT *
@@ -34,7 +34,7 @@ namespace MC.ApiCadastroClientes.Infra.Data.Repository
                     return c;
                 }, new { uid = id }).FirstOrDefault();
         }
-
+        
         public IEnumerable<Cliente> ObterAtivos()
         {
             return Buscar(c => c.Ativo && !c.Excluido);
@@ -52,7 +52,7 @@ namespace MC.ApiCadastroClientes.Infra.Data.Repository
 
         public override void Remover(Guid id)
         {
-            var cliente = ObterPorId(id);
+            var cliente = base.ObterPorId(id);
             cliente.Excluir();
 
             Atualizar(cliente);

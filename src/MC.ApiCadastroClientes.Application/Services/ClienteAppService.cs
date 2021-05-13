@@ -23,19 +23,13 @@ namespace MC.ApiCadastroClientes.Application.Services
         public NewClienteViewModel Adicionar(NewClienteViewModel clienteModel)
         {
             var cliente = _mapper.Map<Cliente>(clienteModel);
-            //var endereco = _mapper.Map<Endereco>(clienteEnderecoViewModel.Endereco);
-
-            //cliente.Enderecos.Add(endereco);
-            cliente.Ativo = true;
-
             _clienteRepository.Adicioner(cliente);
             return clienteModel;
         }
 
-        public ClienteViewModel Atualizar(ClienteViewModel clienteViewModel)
+        public ViewUpdateClienteViewModel Atualizar(ViewUpdateClienteViewModel clienteViewModel)
         {
             var cliente = _mapper.Map<Cliente>(clienteViewModel);
-            cliente.Ativo = true;
             _clienteRepository.Atualizar(cliente);
             return clienteViewModel;
         }
@@ -45,27 +39,27 @@ namespace MC.ApiCadastroClientes.Application.Services
             _clienteRepository.Dispose();
         }
 
-        public IEnumerable<ViewClienteViewModel> ObterAtivos()
+        public IEnumerable<ViewUpdateClienteViewModel> ObterAtivos()
         {
-            return _mapper.Map<IEnumerable<ViewClienteViewModel>>(_clienteRepository.ObterAtivos());
+            return _mapper.Map<IEnumerable<ViewUpdateClienteViewModel>>(_clienteRepository.ObterAtivos());
         }
 
-        public ClienteViewModel ObterPorCpf(string cpf)
-        {
-            throw new NotImplementedException();
-        }
-
-        public ClienteViewModel ObterPorEmail(string email)
+        public ViewUpdateClienteViewModel ObterPorCpf(string cpf)
         {
             throw new NotImplementedException();
         }
 
-        public ClienteViewModel ObterPorId(Guid id)
+        public ViewUpdateClienteViewModel ObterPorEmail(string email)
         {
-            return _mapper.Map<ClienteViewModel>(_clienteRepository.ObterPorId(id));
+            throw new NotImplementedException();
         }
 
-        public IEnumerable<ClienteViewModel> ObterTodos()
+        public ViewUpdateClienteViewModel ObterPorId(Guid id)
+        {
+            return _mapper.Map<ViewUpdateClienteViewModel>(_clienteRepository.ObterPorId(id));
+        }
+
+        public IEnumerable<ViewUpdateClienteViewModel> ObterTodos()
         {
             throw new NotImplementedException();
         }
