@@ -8,6 +8,8 @@ using System.Linq;
 
 namespace MC.ApiCadastroClientes.Services.WebApi.Controllers
 {
+
+    [EnableCors("MyPolicy")]
     [Route("api/[Controller]")]
     [ApiController]
     public class ClientesController : ControllerBase
@@ -32,11 +34,16 @@ namespace MC.ApiCadastroClientes.Services.WebApi.Controllers
             return _clienteAppService.Atualizar(cliente);
         }
 
-        [EnableCors("MyPolicy")]
-        [HttpGet]
+        [HttpGet("ativos")]
         public ActionResult<IEnumerable<ViewUpdateClienteViewModel>> obterAtivos()
         {
             return _clienteAppService.ObterAtivos().ToList();
+        }
+
+        [HttpGet]
+        public ActionResult<IEnumerable<ViewUpdateClienteViewModel>> obterTodos()
+        {
+            return _clienteAppService.ObterTodos().ToList();
         }
 
         [HttpGet("{id}")]

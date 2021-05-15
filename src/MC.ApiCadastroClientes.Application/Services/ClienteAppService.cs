@@ -61,7 +61,7 @@ namespace MC.ApiCadastroClientes.Application.Services
 
         public IEnumerable<ViewUpdateClienteViewModel> ObterTodos()
         {
-            throw new NotImplementedException();
+            return _mapper.Map<IEnumerable<ViewUpdateClienteViewModel>>(_clienteRepository.ObterTodos());
         }
 
         public void Remover(Guid id)
