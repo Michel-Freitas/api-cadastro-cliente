@@ -7,7 +7,6 @@ namespace MC.ApiCadastroClientes.Domain.Models
         protected Entity()
         {
             Id = new Guid();
-            DataCadastro = new DateTime();
         }
 
         public Guid Id { get; set; }
