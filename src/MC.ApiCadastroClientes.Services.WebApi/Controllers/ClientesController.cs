@@ -34,13 +34,13 @@ namespace MC.ApiCadastroClientes.Services.WebApi.Controllers
             return _clienteAppService.Atualizar(cliente);
         }
 
-        [HttpGet("ativos")]
+        [HttpGet]
         public ActionResult<IEnumerable<ViewUpdateClienteViewModel>> obterAtivos()
         {
             return _clienteAppService.ObterAtivos().ToList();
         }
 
-        [HttpGet]
+        [HttpGet("obtertodos")]
         public ActionResult<IEnumerable<ViewUpdateClienteViewModel>> obterTodos()
         {
             return _clienteAppService.ObterTodos().ToList();
