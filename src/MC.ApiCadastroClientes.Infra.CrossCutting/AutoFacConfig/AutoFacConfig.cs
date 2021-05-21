@@ -16,6 +16,9 @@ namespace MC.ApiCadastroClientes.Infra.CrossCutting.AutoFacConfig
 
             builder.RegisterType<ClienteAppService>().As<IClienteAppService>();
             builder.RegisterType<ClienteRepository>().As<IClienteRepository>();
+            builder.RegisterType<EnderecoAppService>().As<IEnderecoAppService>();
+            builder.RegisterType<EnderecoRepository>().As<IEnderecoRepository>();
+
             builder.Register(ctx => new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile(new AutoMapperConfig());
