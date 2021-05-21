@@ -47,6 +47,7 @@ namespace MC.ApiCadastroClientes.Services.WebApi
             });
         }
 
+        // Configurando AutoFac
         public void ConfigureContainer(ContainerBuilder builder)
         {
             builder.RegisterModule(new ModuleAutoFac());

@@ -12,11 +12,11 @@ namespace MC.ApiCadastroClientes.Infra.Data.Repository
     public class EnderecoRepository : Repository<Endereco>, IEnderecoRepository
     {
 
-        private readonly ApiCadastroClienteContext apiContext;
+        private readonly ApiCadastroClienteContext _apiContext;
 
         public EnderecoRepository(ApiCadastroClienteContext apicontext) : base(apicontext)
         {
-            apiContext = apicontext;
+            _apiContext = apicontext;
         }
 
         public IEnumerable<Endereco> ObterPorBairro()

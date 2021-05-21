@@ -32,5 +32,11 @@ namespace MC.ApiCadastroClientes.Services.WebApi.Controllers
         {
             return _enderecoAppService.listarTodosEnderecos().ToList();
         }
+
+        [HttpPut("{id:guid}")]
+        public ActionResult<ViewUpdateEnderecoViewModel> atualizarEndereco([FromBody] ViewUpdateEnderecoViewModel endereco, Guid id)
+        {
+            return _enderecoAppService.atualizarEndereco(endereco);
+        }
     }
 }

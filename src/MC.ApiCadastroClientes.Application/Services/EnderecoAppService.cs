@@ -34,5 +34,12 @@ namespace MC.ApiCadastroClientes.Application.Services
         {
             return _mapper.Map<IEnumerable<ViewUpdateEnderecoViewModel>>(_enderecoRepository.ObterTodos());
         }
+
+        public ViewUpdateEnderecoViewModel atualizarEndereco(ViewUpdateEnderecoViewModel enderecoModel)
+        {
+            var endereco = _mapper.Map<Endereco>(enderecoModel);
+            _enderecoRepository.Atualizar(endereco);
+            return enderecoModel;
+        }
     }
 }
