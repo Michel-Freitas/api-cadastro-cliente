@@ -1,5 +1,4 @@
 using Autofac;
-using MC.ApiCadastroClientes.Application.AutoMapper;
 using MC.ApiCadastroClientes.Infra.CrossCutting.AutoFacConfig;
 using MC.ApiCadastroClientes.Infra.Data.Context;
 using Microsoft.AspNetCore.Builder;

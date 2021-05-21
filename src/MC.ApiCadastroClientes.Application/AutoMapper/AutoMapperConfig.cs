@@ -8,7 +8,7 @@ namespace MC.ApiCadastroClientes.Application.AutoMapper
     {
         public AutoMapperConfig()
         {
-            CreateMap<Endereco, EnderecoViewModel>().ReverseMap();
+            CreateMap<Endereco, ViewUpdateEnderecoViewModel>().ReverseMap();
 
             CreateMap<Cliente, NewClienteViewModel>().ReverseMap();
             CreateMap<Cliente, ViewUpdateClienteViewModel>().ReverseMap();

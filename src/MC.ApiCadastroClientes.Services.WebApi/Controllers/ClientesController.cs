@@ -28,7 +28,7 @@ namespace MC.ApiCadastroClientes.Services.WebApi.Controllers
             return cliente;
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("{id:guid}")]
         public ActionResult<ViewUpdateClienteViewModel> atualizar(Guid id, [FromBody] ViewUpdateClienteViewModel cliente)
         {
             return _clienteAppService.Atualizar(cliente);
@@ -40,21 +40,15 @@ namespace MC.ApiCadastroClientes.Services.WebApi.Controllers
             return _clienteAppService.ObterAtivos().ToList();
         }
 
-        [HttpGet("obtertodos")]
-        public ActionResult<IEnumerable<ViewUpdateClienteViewModel>> obterTodos()
-        {
-            return _clienteAppService.ObterTodos().ToList();
-        }
-
-        [HttpGet("{id}")]
+        [HttpGet("{id:guid}")]
         public ActionResult<ViewUpdateClienteViewModel> obterPorId(string id)
         {
             Guid.TryParse(id, out Guid idGuid);
             return _clienteAppService.ObterPorId(idGuid);
         }
 
-        [HttpDelete("{id}")]
-        public void remover(string id)
+        [HttpDelete("{id:guid}")]
+        public void removerCliente(string id)
         {
             Guid.TryParse(id, out Guid idGuid);
             _clienteAppService.Remover(idGuid);
