@@ -20,6 +20,8 @@ namespace MC.ApiCadastroClientes.Application.Interfaces
 
         ViewUpdateClienteViewModel Atualizar(ViewUpdateClienteViewModel clienteViewModel);
 
+        IEnumerable<ViewUpdateClienteViewModel> BuscaDinamica(string fieldValue);
+
         void Remover(Guid id);
     }
 }

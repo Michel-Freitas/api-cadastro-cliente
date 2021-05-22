@@ -53,5 +53,11 @@ namespace MC.ApiCadastroClientes.Services.WebApi.Controllers
             Guid.TryParse(id, out Guid idGuid);
             _clienteAppService.Remover(idGuid);
         }
+
+        [HttpGet("buscaGenerica")]
+        public ActionResult<IEnumerable<ViewUpdateClienteViewModel>> buscaGenerica(string fieldvalue)
+        {
+            return _clienteAppService.BuscaDinamica(fieldvalue).ToList();
+        }
     }
 }

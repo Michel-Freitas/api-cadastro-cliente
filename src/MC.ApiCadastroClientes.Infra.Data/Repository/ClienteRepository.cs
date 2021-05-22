@@ -32,7 +32,16 @@ namespace MC.ApiCadastroClientes.Infra.Data.Repository
                     return c;
                 }, new { uid = id }).FirstOrDefault();
         }
-        
+
+        public IEnumerable<Cliente> BuscaDinamica(string fieldValue)
+        {
+            var sql = @"SELECT *
+                        FROM Clientes
+                        WHERE Nome LIKE @fieldvalue";
+
+            return Db.Database.GetDbConnection().Query<Cliente>(sql, new { fieldvalue = fieldValue });
+        }
+
         public IEnumerable<Cliente> ObterAtivos()
         {
             return Buscar(c => !c.Excluido);

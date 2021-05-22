@@ -9,6 +9,8 @@ namespace MC.ApiCadastroClientes.Domain.Interfaces
 
         Cliente ObterPorEmail(string email);
 
+        IEnumerable<Cliente> BuscaDinamica(string fieldValue);
+
         IEnumerable<Cliente> ObterAtivos();
     }
 }

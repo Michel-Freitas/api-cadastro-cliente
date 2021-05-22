@@ -64,6 +64,11 @@ namespace MC.ApiCadastroClientes.Application.Services
             return _mapper.Map<IEnumerable<ViewUpdateClienteViewModel>>(_clienteRepository.ObterTodos());
         }
 
+        public IEnumerable<ViewUpdateClienteViewModel> BuscaDinamica(string fieldValue)
+        {
+            return _mapper.Map<IEnumerable<ViewUpdateClienteViewModel>>(_clienteRepository.BuscaDinamica(fieldValue));
+        }
+
         public void Remover(Guid id)
         {
             _clienteRepository.Remover(id);
