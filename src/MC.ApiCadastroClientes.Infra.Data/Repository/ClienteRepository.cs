@@ -17,16 +17,14 @@ namespace MC.ApiCadastroClientes.Infra.Data.Repository
         {
             apiContext = apicontext;
         }
-        /*
+        
         public override Cliente ObterPorId(Guid id)
         {
             var sql = @"SELECT *
 	                        FROM Clientes cl
-	                        JOIN Enderecos ed
+	                        LEFT JOIN Enderecos ed
 		                        ON cl.Id = ed.ClienteId
-	                        WHERE cl.Id = @uid
-		                        AND cl.Ativo = 1
-		                        AND cl.Excluido = 0;";
+	                        WHERE cl.Id = @uid;";
 
             return Db.Database.GetDbConnection().Query<Cliente, Endereco, Cliente>(sql, (c, e) => 
                 {
@@ -34,7 +32,7 @@ namespace MC.ApiCadastroClientes.Infra.Data.Repository
                     return c;
                 }, new { uid = id }).FirstOrDefault();
         }
-        */
+        
         public IEnumerable<Cliente> ObterAtivos()
         {
             return Buscar(c => !c.Excluido);
@@ -52,7 +50,7 @@ namespace MC.ApiCadastroClientes.Infra.Data.Repository
 
         public override void Remover(Guid id)
         {
-            var cliente = base.ObterPorId(id);
+            var cliente = ObterPorId(id);
             cliente.Excluir();
 
             Atualizar(cliente);

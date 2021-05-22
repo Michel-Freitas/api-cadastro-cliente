@@ -3,9 +3,6 @@ using MC.ApiCadastroClientes.Domain.Models;
 using MC.ApiCadastroClientes.Infra.Data.Context;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MC.ApiCadastroClientes.Infra.Data.Repository
 {

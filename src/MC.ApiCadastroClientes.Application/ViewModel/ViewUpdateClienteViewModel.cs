@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace MC.ApiCadastroClientes.Application.ViewModel
@@ -8,5 +9,7 @@ namespace MC.ApiCadastroClientes.Application.ViewModel
         [Required(ErrorMessage = "Preencha o campo ID")]
         public Guid Id { get; set; }
         public DateTime DataCadastro { get; set; }
+
+        public ICollection<ViewUpdateEnderecoViewModel> Enderecos { get; set;}
     }
 }

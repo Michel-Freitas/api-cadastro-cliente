@@ -5,9 +5,6 @@ using MC.ApiCadastroClientes.Domain.Interfaces;
 using MC.ApiCadastroClientes.Domain.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MC.ApiCadastroClientes.Application.Services
 {
