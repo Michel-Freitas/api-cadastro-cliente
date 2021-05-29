@@ -41,17 +41,15 @@ namespace MC.ApiCadastroClientes.Services.WebApi.Controllers
         }
 
         [HttpGet("{id:guid}")]
-        public ActionResult<ViewUpdateClienteViewModel> obterPorId(string id)
+        public ActionResult<ViewUpdateClienteViewModel> obterPorId(Guid id)
         {
-            Guid.TryParse(id, out Guid idGuid);
-            return _clienteAppService.ObterPorId(idGuid);
+            return _clienteAppService.ObterPorId(id);
         }
 
-        [HttpDelete("{id:guid}")]
-        public void removerCliente(string id)
+        [HttpDelete("{idClient:guid}")]
+        public void removerCliente(Guid idClient)
         {
-            Guid.TryParse(id, out Guid idGuid);
-            _clienteAppService.Remover(idGuid);
+            _clienteAppService.Remover(idClient);
         }
 
         [HttpGet("buscaGenerica")]

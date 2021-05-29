@@ -28,7 +28,10 @@ namespace MC.ApiCadastroClientes.Infra.Data.Repository
 
             return Db.Database.GetDbConnection().Query<Cliente, Endereco, Cliente>(sql, (c, e) => 
                 {
-                    c.Enderecos.Add(e);
+                    if(e != null)
+                    {
+                        c.Enderecos.Add(e);
+                    }
                     return c;
                 }, new { uid = id }).FirstOrDefault();
         }
@@ -59,7 +62,7 @@ namespace MC.ApiCadastroClientes.Infra.Data.Repository
 
         public override void Remover(Guid id)
         {
-            var cliente = ObterPorId(id);
+            var cliente = base.ObterPorId(id);
             cliente.Excluir();
 
             Atualizar(cliente);
