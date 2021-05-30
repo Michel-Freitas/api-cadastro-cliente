@@ -31,6 +31,8 @@ namespace MC.ApiCadastroClientes.Infra.Data.EntityConfig
             builder.Property(prop => prop.Complemento)
                 .HasMaxLength(150);
 
+            builder.Ignore(prop => prop.ValidationResult);
+
             // ONE TO MANY
             builder.HasOne(e => e.Cliente)
                 .WithMany(c => c.Enderecos)

@@ -33,6 +33,8 @@ namespace MC.ApiCadastroClientes.Infra.Data.EntityConfig
 
             builder.Property(prop => prop.Excluido)
                 .IsRequired();
+
+            builder.Ignore(prop => prop.ValidationResult);
         }
     }
 }
