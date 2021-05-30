@@ -20,11 +20,17 @@ namespace MC.ApiCadastroClientes.Domain.Services
 
         public Cliente Adicionar(Cliente cliente)
         {
+            if (!cliente.EhValido())
+                return cliente;
+
             return _clienteRepository.Adicionar(cliente);
         }
 
         public Cliente Atualizar(Cliente cliente)
         {
+            if (!cliente.EhValido())
+                return cliente;
+
             return _clienteRepository.Atualizar(cliente);
         }
 

@@ -26,14 +26,16 @@ namespace MC.ApiCadastroClientes.Application.Services
         public NewClienteViewModel Adicionar(NewClienteViewModel clienteModel)
         {
             var cliente = _mapper.Map<Cliente>(clienteModel);
-            _clienteService.Adicionar(cliente);
+            var clienteResult = _clienteService.Adicionar(cliente);
+            clienteModel = _mapper.Map<NewClienteViewModel>(clienteResult);
             return clienteModel;
         }
 
         public ViewUpdateClienteViewModel Atualizar(ViewUpdateClienteViewModel clienteViewModel)
         {
             var cliente = _mapper.Map<Cliente>(clienteViewModel);
-            _clienteService.Atualizar(cliente);
+            var clienteResult = _clienteService.Atualizar(cliente);
+            clienteViewModel = _mapper.Map<ViewUpdateClienteViewModel>(clienteResult);
             return clienteViewModel;
         }
 

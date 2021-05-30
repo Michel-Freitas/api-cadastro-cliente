@@ -22,7 +22,7 @@ namespace MC.ApiCadastroClientes.Application.Services
         public NewEnderecoViewModel adicionar(NewEnderecoViewModel enderecoModel, Guid clienteId)
         {
             var endereco = _mapper.Map<Endereco>(enderecoModel);
-            _enderecoRepository.Adicioner(endereco);
+            _enderecoRepository.Adicionar(endereco);
 
             return enderecoModel;
         }

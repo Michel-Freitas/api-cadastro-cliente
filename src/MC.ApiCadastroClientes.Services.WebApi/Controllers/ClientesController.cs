@@ -24,14 +24,15 @@ namespace MC.ApiCadastroClientes.Services.WebApi.Controllers
         [HttpPost]
         public ActionResult<NewClienteViewModel> adicionarCliente([FromBody] NewClienteViewModel cliente)
         {
-            _clienteAppService.Adicionar(cliente);
+            cliente = _clienteAppService.Adicionar(cliente);
             return cliente;
         }
 
         [HttpPut("{id:guid}")]
         public ActionResult<ViewUpdateClienteViewModel> atualizar(Guid id, [FromBody] ViewUpdateClienteViewModel cliente)
         {
-            return _clienteAppService.Atualizar(cliente);
+            cliente = _clienteAppService.Atualizar(cliente);
+            return cliente;
         }
 
         [HttpGet]
