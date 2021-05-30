@@ -20,7 +20,7 @@ namespace MC.ApiCadastroClientes.Infra.Data.Repository
             DbSet = Db.Set<TEntity>();
         }
 
-        public virtual TEntity Adicioner(TEntity obj)
+        public virtual TEntity Adicionar(TEntity obj)
         {
             var resultEntity = DbSet.Add(obj);
             SaveChanges();

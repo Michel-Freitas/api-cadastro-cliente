@@ -2,6 +2,7 @@
 using MC.ApiCadastroClientes.Application.Interfaces;
 using MC.ApiCadastroClientes.Application.ViewModel;
 using MC.ApiCadastroClientes.Domain.Interfaces;
+using MC.ApiCadastroClientes.Domain.Interfaces.Services;
 using MC.ApiCadastroClientes.Domain.Models;
 using System;
 using System.Collections.Generic;
@@ -12,31 +13,28 @@ namespace MC.ApiCadastroClientes.Application.Services
     {
 
         private readonly IClienteRepository _clienteRepository;
+        private readonly IClienteService _clienteService;
         private static IMapper _mapper;
 
-        public ClienteAppService(IClienteRepository clienteRepository, IMapper mapper)
+        public ClienteAppService(IClienteRepository clienteRepository, IClienteService clienteService, IMapper mapper)
         {
             _clienteRepository = clienteRepository;
+            _clienteService = clienteService;
             _mapper = mapper;
         }
 
         public NewClienteViewModel Adicionar(NewClienteViewModel clienteModel)
         {
             var cliente = _mapper.Map<Cliente>(clienteModel);
-            _clienteRepository.Adicioner(cliente);
+            _clienteService.Adicionar(cliente);
             return clienteModel;
         }
 
         public ViewUpdateClienteViewModel Atualizar(ViewUpdateClienteViewModel clienteViewModel)
         {
             var cliente = _mapper.Map<Cliente>(clienteViewModel);
-            _clienteRepository.Atualizar(cliente);
+            _clienteService.Atualizar(cliente);
             return clienteViewModel;
-        }
-
-        public void Dispose()
-        {
-            _clienteRepository.Dispose();
         }
 
         public IEnumerable<ViewUpdateClienteViewModel> ObterAtivos()
@@ -71,7 +69,13 @@ namespace MC.ApiCadastroClientes.Application.Services
 
         public void Remover(Guid id)
         {
-            _clienteRepository.Remover(id);
+            _clienteService.Remover(id);
+        }
+
+        public void Dispose()
+        {
+            _clienteRepository.Dispose();
+            _clienteService.Dispose();
         }
     }
 }

@@ -7,7 +7,7 @@ namespace MC.ApiCadastroClientes.Domain.Interfaces
 {
     public interface IRepository<TEntity> : IDisposable where TEntity : Entity
     {
-        TEntity Adicioner(TEntity obj);
+        TEntity Adicionar(TEntity obj);
 
         TEntity ObterPorId(Guid id);
 
