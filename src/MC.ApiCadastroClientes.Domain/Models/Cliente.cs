@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MC.ApiCadastroClientes.Domain.Validations.Clientes;
+using System;
 using System.Collections.Generic;
 
 namespace MC.ApiCadastroClientes.Domain.Models
@@ -22,6 +23,12 @@ namespace MC.ApiCadastroClientes.Domain.Models
         {
             Ativo = false;
             Excluido = true;
+        }
+
+        public override bool EhValido()
+        {
+            ValidationResult = new ClienteEstaConsistenteValidation().Validate(this);
+            return ValidationResult.IsValid;
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace MC.ApiCadastroClientes.Domain.Models
 {
@@ -14,5 +13,10 @@ namespace MC.ApiCadastroClientes.Domain.Models
         public string Estado { get; set; }
         public Guid ClienteId { get; set; }
         public virtual Cliente Cliente { get; set; }
+
+        public override bool EhValido()
+        {
+            return true;
+        }
     }
 }
