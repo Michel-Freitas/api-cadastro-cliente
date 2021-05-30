@@ -24,5 +24,7 @@ namespace MC.ApiCadastroClientes.Application.ViewModel
         public DateTime DataNascimento { get; set; }
 
         public bool Ativo { get; set; }
+
+        public DomainValidationCore.Validation.ValidationResult ValidationResult { get; set; }
     }
 }
