@@ -4,19 +4,22 @@ using MC.ApiCadastroClientes.Application.ViewModel;
 using MC.ApiCadastroClientes.Domain.Interfaces;
 using MC.ApiCadastroClientes.Domain.Interfaces.Services;
 using MC.ApiCadastroClientes.Domain.Models;
+using MC.ApiCadastroClientes.Infra.Data.UoW;
 using System;
 using System.Collections.Generic;
 
 namespace MC.ApiCadastroClientes.Application.Services
 {
-    public class ClienteAppService : IClienteAppService
+    public class ClienteAppService : AppService, IClienteAppService
     {
-
         private readonly IClienteRepository _clienteRepository;
         private readonly IClienteService _clienteService;
         private static IMapper _mapper;
 
-        public ClienteAppService(IClienteRepository clienteRepository, IClienteService clienteService, IMapper mapper)
+        public ClienteAppService(IClienteRepository clienteRepository,
+            IClienteService clienteService,
+            IUnitOfWork uow,
+            IMapper mapper) : base (uow)
         {
             _clienteRepository = clienteRepository;
             _clienteService = clienteService;
@@ -27,6 +30,10 @@ namespace MC.ApiCadastroClientes.Application.Services
         {
             var cliente = _mapper.Map<Cliente>(clienteModel);
             var clienteResult = _clienteService.Adicionar(cliente);
+
+            if (clienteResult.ValidationResult.IsValid)
+                commit();
+
             clienteModel = _mapper.Map<NewClienteViewModel>(clienteResult);
             return clienteModel;
         }
