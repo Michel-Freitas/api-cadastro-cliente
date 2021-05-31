@@ -6,7 +6,9 @@ using MC.ApiCadastroClientes.Application.Services;
 using MC.ApiCadastroClientes.Domain.Interfaces;
 using MC.ApiCadastroClientes.Domain.Interfaces.Services;
 using MC.ApiCadastroClientes.Domain.Services;
+using MC.ApiCadastroClientes.Infra.Data.Context;
 using MC.ApiCadastroClientes.Infra.Data.Repository;
+using MC.ApiCadastroClientes.Infra.Data.UoW;
 
 namespace MC.ApiCadastroClientes.Infra.CrossCutting.AutoFacConfig
 {
@@ -21,6 +23,9 @@ namespace MC.ApiCadastroClientes.Infra.CrossCutting.AutoFacConfig
             builder.RegisterType<ClienteService>().As<IClienteService>();
             builder.RegisterType<EnderecoAppService>().As<IEnderecoAppService>();
             builder.RegisterType<EnderecoRepository>().As<IEnderecoRepository>();
+            builder.RegisterType<UnitOfWork>().As<IUnitOfWork>();
+
+            //builder.RegisterType<ApiCadastroClienteContext>().InstancePerRequest();
 
             builder.Register(ctx => new MapperConfiguration(cfg =>
             {
