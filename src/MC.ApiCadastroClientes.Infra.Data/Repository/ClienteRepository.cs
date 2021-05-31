@@ -11,12 +11,8 @@ namespace MC.ApiCadastroClientes.Infra.Data.Repository
 {
     public class ClienteRepository : Repository<Cliente>, IClienteRepository
     {
-        private readonly ApiCadastroClienteContext apiContext;
 
-        public ClienteRepository(ApiCadastroClienteContext apicontext) : base(apicontext)
-        {
-            apiContext = apicontext;
-        }
+        public ClienteRepository(ApiCadastroClienteContext apicontext) : base(apicontext) { }
         
         public override Cliente ObterPorId(Guid id)
         {

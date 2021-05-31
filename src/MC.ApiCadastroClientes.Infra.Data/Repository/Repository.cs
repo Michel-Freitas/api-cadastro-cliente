@@ -23,7 +23,6 @@ namespace MC.ApiCadastroClientes.Infra.Data.Repository
         public virtual TEntity Adicionar(TEntity obj)
         {
             var resultEntity = DbSet.Add(obj);
-            SaveChanges();
             return resultEntity.Entity;
         }
 
@@ -32,13 +31,11 @@ namespace MC.ApiCadastroClientes.Infra.Data.Repository
             var entry = Db.Entry(obj);
             DbSet.Attach(obj);
             entry.State = EntityState.Modified;
-            SaveChanges();
             return obj;
         }
 
         public virtual IEnumerable<TEntity> Buscar(Expression<Func<TEntity, bool>> predicate)
         {
-            
             return DbSet.Where(predicate);
         }
 
@@ -66,7 +63,6 @@ namespace MC.ApiCadastroClientes.Infra.Data.Repository
         {
             var obj = new TEntity() { Id = id };
             DbSet.Remove(obj);
-            SaveChanges();
         }
 
         public int SaveChanges()
