@@ -4,19 +4,18 @@ using MC.ApiCadastroClientes.Domain.Models;
 
 namespace MC.ApiCadastroClientes.Domain.Specifications.Clientes
 {
-    public class ClienteDevePossuirCpfEmailUnicoSpecification : ISpecification<Cliente>
+    class ClienteDevePossuirEmailUnicoSpecification : ISpecification<Cliente>
     {
         private readonly IClienteRepository _clienteRepository;
 
-        public ClienteDevePossuirCpfEmailUnicoSpecification(IClienteRepository clienteRepository)
+        public ClienteDevePossuirEmailUnicoSpecification(IClienteRepository clienteRepository)
         {
             _clienteRepository = clienteRepository;
         }
 
         public bool IsSatisfiedBy(Cliente cliente)
         {
-            return _clienteRepository.ObterPorCpf(cliente.Cpf) == null &&
-                _clienteRepository.ObterPorEmail(cliente.Email) == null;
+            return _clienteRepository.ObterPorEmail(cliente.Email) == null;
         }
     }
 }

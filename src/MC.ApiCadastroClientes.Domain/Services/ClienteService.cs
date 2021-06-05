@@ -3,10 +3,6 @@ using MC.ApiCadastroClientes.Domain.Interfaces.Services;
 using MC.ApiCadastroClientes.Domain.Models;
 using MC.ApiCadastroClientes.Domain.Validations.Clientes;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MC.ApiCadastroClientes.Domain.Services
 {
@@ -33,6 +29,8 @@ namespace MC.ApiCadastroClientes.Domain.Services
         {
             if (!cliente.EhValido())
                 return cliente;
+
+            cliente.ValidationResult = new ClienteAptoParaAtualizacaoValidation(_clienteRepository).Validate(cliente);
 
             return _clienteRepository.Atualizar(cliente);
         }
