@@ -34,8 +34,6 @@ namespace MC.ApiCadastroClientes.Domain.Services
             if (!cliente.EhValido())
                 return cliente;
 
-            cliente.ValidationResult = new ClienteAptoParaCadastroValidation(_clienteRepository).Validate(cliente);
-
             return _clienteRepository.Atualizar(cliente);
         }
 

@@ -5,15 +5,13 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
 
 namespace MC.ApiCadastroClientes.Services.WebApi.Controllers
 {
 
     [EnableCors("MyPolicy")]
     [Route("api/[Controller]")]
-    [ApiController]
-    public class ClientesController : ControllerBase
+    public class ClientesController : ApiController
     {
         private readonly IClienteAppService _clienteAppService;
 
@@ -23,20 +21,19 @@ namespace MC.ApiCadastroClientes.Services.WebApi.Controllers
         }
 
         [HttpPost]
-        public ActionResult<NewClienteViewModel> adicionarCliente([FromBody] NewClienteViewModel cliente)
+        public IActionResult adicionarCliente([FromBody] NewClienteViewModel cliente)
         {
             cliente = _clienteAppService.Adicionar(cliente);
-            if (!cliente.ValidationResult.IsValid)
-                return BadRequest(cliente);
 
-            return cliente;
+            return cliente.ValidationResult.IsValid ? ApiResponse(cliente) : ApiResponse(cliente.ValidationResult);
         }
-        
+
         [HttpPut("{id:guid}")]
-        public ActionResult<ViewUpdateClienteViewModel> atualizar(Guid id, [FromBody] ViewUpdateClienteViewModel cliente)
+        public IActionResult atualizar(Guid id, [FromBody] ViewUpdateClienteViewModel cliente)
         {
             cliente = _clienteAppService.Atualizar(cliente);
-            return cliente;
+
+            return cliente.ValidationResult.IsValid ? ApiResponse(cliente) : ApiResponse(cliente.ValidationResult);
         }
 
         [HttpGet]

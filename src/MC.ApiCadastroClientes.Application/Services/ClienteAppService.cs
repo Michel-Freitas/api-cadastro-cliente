@@ -42,6 +42,7 @@ namespace MC.ApiCadastroClientes.Application.Services
         {
             var cliente = _mapper.Map<Cliente>(clienteViewModel);
             var clienteResult = _clienteService.Atualizar(cliente);
+
             if(clienteResult.ValidationResult.IsValid)
                 commit();
 

@@ -10,8 +10,7 @@ namespace MC.ApiCadastroClientes.Services.WebApi.Controllers
 {
     [EnableCors("MyPolicy")]
     [Route("api/[Controller]")]
-    [ApiController]
-    public class EnderecosController : ControllerBase
+    public class EnderecosController : ApiController
     {
         private readonly IEnderecoAppService _enderecoAppService;
 
