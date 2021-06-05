@@ -16,7 +16,8 @@ namespace MC.ApiCadastroClientes.Application.ViewModel
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Preencha o campo CPF")]
-        [MaxLength(11, ErrorMessage = "Máximo {1} caracteres")]
+        [MaxLength(11, ErrorMessage = "CPF deve ter {1} caracteres")]
+        [MinLength(11, ErrorMessage = "CPF deve ter {1} caracteres")]
         public string Cpf { get; set; }
 
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]

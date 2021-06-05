@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 
 namespace MC.ApiCadastroClientes.Services.WebApi.Controllers
 {
@@ -25,9 +26,12 @@ namespace MC.ApiCadastroClientes.Services.WebApi.Controllers
         public ActionResult<NewClienteViewModel> adicionarCliente([FromBody] NewClienteViewModel cliente)
         {
             cliente = _clienteAppService.Adicionar(cliente);
+            if (!cliente.ValidationResult.IsValid)
+                return BadRequest(cliente);
+
             return cliente;
         }
-
+        
         [HttpPut("{id:guid}")]
         public ActionResult<ViewUpdateClienteViewModel> atualizar(Guid id, [FromBody] ViewUpdateClienteViewModel cliente)
         {

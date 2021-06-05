@@ -8,7 +8,7 @@ namespace MC.ApiCadastroClientes.Domain.Validations.Clientes
     {
         public ClienteEstaConsistenteValidation()
         {
-            var CpfCliente = new ClienteDeveSerMaiorDeIdadeSpecification();
+            var CpfCliente = new ClienteDeveTerCpfValidoSpecification();
             var EmailCliente = new ClienteDeveTerEmailValidoSpecification();
             var MaiorIdadeCliente = new ClienteDeveSerMaiorDeIdadeSpecification();
 

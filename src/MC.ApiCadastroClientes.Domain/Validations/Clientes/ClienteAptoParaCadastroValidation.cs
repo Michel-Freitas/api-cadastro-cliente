@@ -9,9 +9,9 @@ namespace MC.ApiCadastroClientes.Domain.Validations.Clientes
     {
         public ClienteAptoParaCadastroValidation(IClienteRepository clienteRepository)
         {
-            var clienteUnico = new ClienteDevePossuirCpfEmailUnicoSpecification(clienteRepository);
+            var clienteCpfEmailUnico = new ClienteDevePossuirCpfEmailUnicoSpecification(clienteRepository);
 
-            base.Add("ClienteUnico", new Rule<Cliente>(clienteUnico, "Cliente com CPF ou E-mail já cadastrado"));
+            base.Add("ClienteUnico", new Rule<Cliente>(clienteCpfEmailUnico, "Cliente com CPF ou E-mail já cadastrado"));
         }
     }
 }
